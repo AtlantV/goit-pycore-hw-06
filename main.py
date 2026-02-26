@@ -18,9 +18,6 @@ class Phone(Field):            # Клас для зберігання номер
             raise ValueError("Please insert 10 numbers")
         super().__init__(value) # з логіки прописаного батьківського Field - по суті ми маємо повернути туди поле
     
-    
-    # Валідація номера телефону (має бути перевірка на 10 цифр).
-
 class Record:                  # Клас для зберігання інформації про контакт, включно з іменем та списком телефонів.
     def __init__(self, name):
         self.name = Name(name)
@@ -32,7 +29,7 @@ class Record:                  # Клас для зберігання інфор
                
     def remove_phone(self, phone_number):
         for phone in self.phones:
-            if phone.value == phone_number:  
+            if phone.value == phone_number:  # Порівнюю значення (а не об'єкт)
                 self.phones.remove(phone)
                 break                            
     
