@@ -40,15 +40,22 @@ class Record:                  # Клас для зберігання інфор
                 break  
 
     def find_phone(self, phone_number):
-       for phone in self.phones:
+        for phone in self.phones:
             if phone.value == phone_number:
                 return phone  # Повертаємо об'єкт Phone
-            return None
+        return None
 
     def __str__(self):
         return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"
 
-class AddressBook(UserDict):   # Клас для зберігання записів та керування ними
-    def add_record ():             # додає запис до self.data
-    def find():                    # знаходить запис за ім'ям
-    def delete():                  # видаляє запис за ім'ям
+class AddressBook(UserDict):                    # Клас для зберігання записів та керування ними
+    def add_record(self, record):
+        self.data[record.name.value] = record   # додає запис до self.data
+    
+    def find(self, name):                       # знаходить запис за ім'ям
+        return self.data.get(name)
+    
+    def delete(self, name):                     # видаляє запис за ім'ям
+        if name in self.data:
+            del self.data[name]
+
